@@ -9,10 +9,8 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-
-
-
 class Department(BaseModel):
+
     department_name = models.CharField(max_length=100)
     
     class Meta:
@@ -21,6 +19,7 @@ class Department(BaseModel):
 
 
 class Student(BaseModel):
+    department = models.ForeignKey(Department ,null=True , blank=True, on_delete=models.CASCADE)
     student_name = models.CharField(max_length=100)
     student_age = models.IntegerField()
     student_address = models.CharField(max_length=100)
