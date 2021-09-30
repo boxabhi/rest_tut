@@ -20,6 +20,9 @@ from home.views import *
 urlpatterns = [
     path('' , home, ),
     path('store_student/' , store_student),
+    path('student/' , StudentView.as_view()),
     path('change_password/' , change_password),
+    path('registration/' , RegistrationView.as_view()),
+    path('login/' , LoginView.as_view()),
     path('admin/', admin.site.urls),
 ]

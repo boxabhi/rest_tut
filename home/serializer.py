@@ -3,10 +3,23 @@ from rest_framework.views import exception_handler
 from .models import *
 
 
+
+class RegistrationSerializer(serializers.Serializer):
+    username   = serializers.CharField()
+    email = serializers.CharField()
+    password = serializers.CharField()
+
+class LoginSerializer(serializers.Serializer):
+    username   = serializers.CharField()
+    password = serializers.CharField()
+
+
+
+
 class PasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField()
     new_password = serializers.CharField()
-    #confirm_password = serializers.CharField()
+    #lsconfirm_password = serializers.CharField()
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
