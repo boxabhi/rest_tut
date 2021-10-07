@@ -12,6 +12,7 @@ class BaseModel(models.Model):
 class Department(BaseModel):
 
     department_name = models.CharField(max_length=100)
+    s_no = models.IntegerField(default=0)
     
     class Meta:
         verbose_name = "school_department"
@@ -24,6 +25,6 @@ class Student(BaseModel):
     student_age = models.IntegerField()
     student_address = models.CharField(max_length=100)
     student_gender = models.CharField(max_length=10 , choices = (('Male' , 'Male') , ('Female' , 'Female')))
-   
+    #departments = models.ManyToManyField(Department)
     def __str__(self) -> str:
         return self.student_name

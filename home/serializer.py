@@ -26,6 +26,21 @@ class DepartmentSerializer(serializers.ModelSerializer):
         model = Department
         exclude = ['created_at' , 'updated_at']
 
+    def has_numbers(self , text):
+        return any(t.isdigit() for t in text)
+
+    def validate(self, validated_data):
+        
+        if 'department_name' in validated_data:
+            if self.has_numbers(validated_data['department_name']):
+                raise serializers.ValidationError("department_name connot be number")
+
+        if 's_no' in validated_data:
+            if validated_data['s_no'] < 0:
+                raise serializers.ValidationError("number cannot be negative")
+
+        return validated_data
+
 
 class StudentSerializer(serializers.ModelSerializer):
     department = serializers.SerializerMethodField()
@@ -35,5 +50,7 @@ class StudentSerializer(serializers.ModelSerializer):
         depth = 1
     
     def get_department(self , obj):
-        serializer = DepartmentSerializer(obj.department)
+        #[1 , 2, ,3 ]
+        
+        serializer = DepartmentSerializer(obj.department.all() , many = True)
         return serializer.data
