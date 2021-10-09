@@ -15,6 +15,10 @@ class LoginSerializer(serializers.Serializer):
 
 
 
+class DepartmentValidationSerializer(serializers.Serializer):
+    student_uid = serializers.UUIDField()
+    department_uid = serializers.UUIDField()
+
 
 class PasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField()
