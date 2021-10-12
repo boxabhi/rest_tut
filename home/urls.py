@@ -11,6 +11,7 @@ router.register(r'department', DepartmentViewSet, basename='department')
 
 
 
+
 urlpatterns = [
     path('' , home, ),
     path('store_student/' , store_student),

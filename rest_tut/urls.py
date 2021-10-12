@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
-
+from accounts.views import *
 
 urlpatterns = [
     path('' , include('home.urls')),
+    path('accounts/register/' , RegisterView.as_view()),
+    path('accounts/activate/' , VeriyOTP.as_view()),
     path('admin/', admin.site.urls),
 ]
 
