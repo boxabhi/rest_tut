@@ -45,6 +45,13 @@ class UserSerializer(serializers.ModelSerializer):
         
         return obj
 
+    def update(self , instance , validated_data):
+        
+        instance.first_name = validated_data['first_name']
+        instance.last_name = validated_data['last_name']
+        instance.email = f"{validated_data['first_name']}{validated_data['last_name']}@gmail.com"
+        instance.save()
+        return instance
 
 
 

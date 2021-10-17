@@ -9,6 +9,7 @@ from .serializers import *
 
 
 
+
 class RegisterView(APIView):
     def post(self , request):
         try:
@@ -35,6 +36,35 @@ class RegisterView(APIView):
                     'message' : 'error',
                     'data' : {}
                 })
+    
+    def patch(self , request):
+        try:
+            data = request.data
+            obj = User.objects.get(id = data['id'])
+            serializer = UserSerializer(obj,data = data , partial = True)
+
+            if serializer.is_valid():
+                serializer.save()
+                return Response({
+                    'status' : 200,
+                    'message' : 'data',
+                    'data' : serializer.data
+                })
+
+            return Response({
+            'status' : False,
+            'message' : 'error',
+            'data' : serializer.errors
+            })
+        except Exception as e:
+            print(e)
+            return Response({
+                    'status' : False,
+                    'message' : 'error',
+                    'data' : {}
+                })
+
+
             
 
 

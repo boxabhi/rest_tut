@@ -23,6 +23,7 @@ class DepartmentValidationSerializer(serializers.Serializer):
 class PasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField()
     new_password = serializers.CharField()
+    age = serializers.IntegerField()
     #lsconfirm_password = serializers.CharField()
 
 class DepartmentSerializer(serializers.ModelSerializer):

@@ -19,6 +19,7 @@ class Department(BaseModel):
 
 
 
+
 class Student(BaseModel):
     department = models.ForeignKey(Department ,null=True , blank=True, on_delete=models.CASCADE)
     student_name = models.CharField(max_length=100)
