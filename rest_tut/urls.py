@@ -20,6 +20,7 @@ from accounts.views import *
 
 urlpatterns = [
     path('' , include('home.urls')),
+    path('quiz/' , include('quiz.urls')),
     path('accounts/register/' , RegisterView.as_view()),
     path('accounts/activate/' , VeriyOTP.as_view()),
     path('admin/', admin.site.urls),
